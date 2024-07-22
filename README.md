@@ -1,5 +1,160 @@
 # ai-digest
 
+This is the method I learned to role this out:  Basically you have to make an ignore file, it should catch the big stuff although if it is too big you will haved to find and include those files on your won, the make a package,json file if not already there (add to it if it is there), then run the npm command to make a codebase file to use to give tho your llm to increase its knowledge of your base.  Redo the codebase file every time you make significant changes.:Using AI-Digest for Codebase Documentation
+This project uses ai-digest to generate a Markdown file summarizing the codebase. Follow the instructions below to set up and use ai-digest effectively in this project.
+
+This assumes npm is installed!
+
+Prerequisites
+Ensure that ai-digest is cloned in a known directory on your system. For this guide, we'll use C:\VS Code\ai-digest.
+
+CLONE IF NOT DONE BEFORE:
+git clone https://github.com/khromov/ai-digest.git "C:\VS Code\ai-digest"
+
+
+
+
+Setting Up Your Project
+Create .aidigestignore Generator Script
+Create a file named generate-aidigestignore.js in your project directory with the following content:
+
+const fs = require('fs');
+const ignorePatterns = `
+# Node modules and environment files
+node_modules
+.env
+
+# Distribution and build directories
+dist
+build
+out
+lib
+
+# Python virtual environments
+venv
+*.pyc
+__pycache__
+
+# Logs and temporary files
+*.log
+tmp
+temp
+*.tmp
+
+# Configuration and system files
+.DS_Store
+Thumbs.db
+.idea
+.vscode
+*.iml
+
+# Git and version control
+.git
+.gitignore
+
+# Test directories
+test
+tests
+coverage
+
+# Binary and compiled files
+*.exe
+*.dll
+*.so
+*.dylib
+*.bin
+*.dat
+*.bak
+
+# Documentation
+*.md
+docs
+
+# Miscellaneous
+*.swp
+*.swo
+*.swn
+*.bak
+*.old
+*.orig
+*.rej
+*.sublime-project
+*.sublime-workspace
+
+# Custom exclusions
+alloy-voice-assistant/venv
+alloy-voice-assistant/data
+alloy-voice-assistant/config
+alloy-voice-assistant/Sonnet35UI/test.py
+alloy-voice-assistant/Sonnet35UI/systemprompt.txt
+alloy-voice-assistant/Sonnet35UI/saved_conversations.json
+`;
+
+fs.writeFile('.aidigestignore', ignorePatterns.trim(), (err) => {
+  if (err) {
+    console.error('Error writing .aidigestignore file:', err);
+  } else {
+    console.log('.aidigestignore file generated successfully.');
+  }
+});
+
+
+
+
+
+
+**Update package.json**
+
+Add the following scripts to your package.json OR MAKE A NEW ONE:
+
+
+{
+  "name": "chatbot",
+  "version": "1.0.0",
+  "description": "Description of your project",
+  "main": "index.js",
+  "scripts": {
+    "generate-ignore": "node generate-aidigestignore.js",
+    "generate-docs": "npm run generate-ignore && npx ts-node ../ai-digest/src/index.ts"
+  }
+}
+
+
+
+
+
+**Generate .aidigestignore File**
+
+Run the following command to generate the .aidigestignore file:
+
+
+npm run generate-ignore
+
+
+
+
+**Generate codebase.md File**
+
+Run the following command to generate the codebase.md file:
+
+
+npm run generate-docs
+
+
+
+**Customizing .aidigestignore**
+
+You can modify the generate-aidigestignore.js script to add more patterns as needed. This script helps ensure that your .aidigestignore file is always up-to-date with the latest exclusions.
+
+**Summary**
+Ensure ai-digest is in the correct directory (C:\VS Code\ai-digest).
+Use npm run generate-ignore to create the ignore file.
+Use npm run generate-docs to generate the documentation file.
+By following these steps, you can easily use ai-digest in any project with minimal hassle.
+
+
+***Original Readme***
+
 A CLI tool to aggregate your codebase into a single Markdown file for use with Claude Projects or custom ChatGPTs.
 
 ## Features

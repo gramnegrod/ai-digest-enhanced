@@ -12,6 +12,7 @@
   "scripts": {
     "build": "tsc",
     "start": "ts-node src/index.ts",
+    "run-ai-digest": "npx ts-node src/index.ts",
     "prepublishOnly": "npm run build",
     "test": "jest --config jest.config.js"
   },
