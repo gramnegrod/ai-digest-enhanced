@@ -1,6 +1,6 @@
 # ai-digest
 
-This is the method how I learned to role this out:  Basically you have to make an ignore file, it should catch the big stuff although if it is too big you will haved to find and include those files on your won, the make a package,json file if not already there (add to it if it is there), then run the npm command to make a codebase file to use to give tho your llm to increase its knowledge of your base.  Redo the codebase file every time you make significant changes.:Using AI-Digest for Codebase Documentation
+I took khromov Stanislav Khromov's idea and made a small tweak.  This is the method how I learned to role this out:  Basically you have to make an ignore file, it should catch the big stuff although if it is too big you will haved to find and include those files on your won, the make a package,json file if not already there (add to it if it is there), then run the npm command to make a codebase file to use to give tho your llm to increase its knowledge of your base.  Redo the codebase file every time you make significant changes.:Using AI-Digest for Codebase Documentation
 This project uses ai-digest to generate a Markdown file summarizing the codebase. Follow the instructions below to set up and use ai-digest effectively in this project.
 
 This assumes npm is installed!
